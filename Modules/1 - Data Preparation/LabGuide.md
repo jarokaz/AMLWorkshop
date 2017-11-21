@@ -11,3 +11,13 @@ This command creates two configuration files in teh aml_config folder of the pro
 - dockervm.compute: This file contains the connection and configuration information for a remote execution target.
 - dockervm.runconfig: This file is a set of run options used within the Workbench application.
 
+Change the configuration in dockervm.runconfig to:
+
+```
+PrepareEnvironment: true 
+CondaDependenciesFile: Config/conda_dependencies.yml 
+SparkDependenciesFile: Config/dsvm_spark_dependencies.yml
+```
+
+
+
