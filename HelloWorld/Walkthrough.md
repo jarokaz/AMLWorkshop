@@ -24,3 +24,9 @@ az ml computetarget attach --name myhdi --address jkpaypal-ssh.azurehdinsight.ne
 az ml experiment submit -c myhdi .\iris_spark.py
 ```
 
+### Operationalize the model locally
+
+Prepare operationalization environment
+```
+az ml env setup -n jkpaypaldemo --location westus2
+```
