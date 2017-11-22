@@ -28,5 +28,15 @@ az ml experiment submit -c myhdi .\iris_spark.py
 
 Prepare operationalization environment
 ```
-az ml env setup -n jkpaypaldemo --location westus2
+az ml env setup -n jkpaypaldemo --location westcentralus
+```
+
+Show operationalization environments
+```
+az ml env show -g jkpaypaldemorg -n jkpaypaldemo
+```
+
+Set operationalization environments
+```
+az ml env set -g jkpaypaldemorg -n jkpaypaldemo
 ```
