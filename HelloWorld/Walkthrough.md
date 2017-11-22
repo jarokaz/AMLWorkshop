@@ -40,3 +40,11 @@ Set operationalization environments
 ```
 az ml env set -g jkpaypaldemorg -n jkpaypaldemo
 ```
+
+Show the current operationalization environment
+```
+az ml env show
+```
+
+
+
