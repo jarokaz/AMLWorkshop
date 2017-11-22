@@ -46,5 +46,8 @@ Show the current operationalization environment
 az ml env show
 ```
 
-
+Create a real-time web service 
+```
+az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
+```
 
