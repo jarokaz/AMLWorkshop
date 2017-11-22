@@ -2,14 +2,14 @@
 ```
 az ml computetarget attach --name dockerdsvm --address jkdslxcpuvm.westus2.cloudapp.azure.com --type remotedocker --username demouser   --password $password 
 ```
-### Prepare compute target
+### Prepare VM compute target
 ```
 az ml experiment prepare -c dockerdsvm
 ```
 Remember to edit the framework in dockerdsvm.runconfig from PySpark to Python
 "Framework": "Python"
 
-### Submit experiment
+### Submit experiment to VM
 ```
 az ml experiment submit -c dockerdsvm .\iris_sklearn.py
 ```
