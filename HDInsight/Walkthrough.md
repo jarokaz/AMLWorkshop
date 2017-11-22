@@ -19,4 +19,6 @@ az ml experiment prepare -c jkhdi
 az ml experiment submit -a -t jkhdi -c jkhdi ./Code/etl.py Config/storageconfig.json FILTER_IP
 ```
 
-
+### Model training 
+```
+az ml experiment submit -a -t jkhdi -c jkhdi ./Code/train.py Config/storageconfig.json
