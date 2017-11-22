@@ -16,7 +16,7 @@ az ml experiment submit -c dockerdsvm .\iris_sklearn.py
 
 ### Create HDInsight compute target
 ```
-az ml computetarget attach --name myhdi --address jkpaypal-ssh.azurehdinsight.net --username sshuser --password <password> --type cluster
+az ml computetarget attach --name myhdi --address jkpaypal-ssh.azurehdinsight.net --username sshuser --type cluster --password <password> 
 ```
 
 ### Submit experiment to Spark
