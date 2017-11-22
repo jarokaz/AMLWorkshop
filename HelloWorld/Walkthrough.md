@@ -45,6 +45,10 @@ Show the current operationalization environment
 ```
 az ml env show
 ```
+Set model management account
+```
+az ml account modelmanagement set  -g jkmlrg -n jkmlmodelmgmt
+```
 
 Create a real-time web service 
 ```
