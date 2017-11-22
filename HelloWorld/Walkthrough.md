@@ -64,6 +64,10 @@ Create image
 ```
 az ml image create -n irisimage --manifest-id <manifest ID>
 ```
+List available images
+```
+az ml images list
+```
 
 Create the service
 ```
