@@ -51,8 +51,23 @@ az ml account modelmanagement set  -g jkmlrg -n jkmlmodelmgmt
 ```
 
 Create a real-time web service 
+
+Register model
 ```
-az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
+az ml model register --model model.pkl --name model.pkl
+```
+Create manifest
+```
+az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json
+```
+Create image
+```
+az ml image create -n irisimage --manifest-id <manifest ID>
+```
+
+Create the service
+```
+az ml service create realtime --image-id <image ID> -n irisapp --collect-model-data true
 ```
 
 Show the service
