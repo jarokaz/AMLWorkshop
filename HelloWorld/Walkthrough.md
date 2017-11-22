@@ -55,3 +55,12 @@ Create a real-time web service
 az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
 ```
 
+Show the service
+```
+az ml service show realtime -i <web service ID>
+```
+
+Test the service
+```
+az ml service run realtime -i irisapp -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
+```
