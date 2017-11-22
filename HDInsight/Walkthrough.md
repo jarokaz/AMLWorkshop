@@ -14,4 +14,9 @@ SparkDependenciesFile: Config/hdi_spark_dependencies.yml
 az ml experiment prepare -c jkhdi
 ```
 
+### Data preparation and feature engineering
+```
+az ml experiment submit -a -t jkhdi -c myhdi ./Code/etl.py Config/storageconfig.json FALSE
+```
+
 
