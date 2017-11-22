@@ -57,7 +57,7 @@ az ml service create realtime -f score_iris.py --model-file model.pkl -s service
 
 Show the service
 ```
-az ml service show realtime -i <web service ID>
+az ml service show realtime -i irisapp
 ```
 
 Test the service
