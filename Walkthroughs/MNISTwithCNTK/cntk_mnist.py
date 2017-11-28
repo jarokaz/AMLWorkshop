@@ -147,57 +147,17 @@ if __name__ == '__main__':
     run_logger.log("Hidden layers dimmension", hidden_layers_dim)
     run_logger.log("No of hidden layers", num_hidden_layers)
 
-    try: 
-        from urllib.request import urlretrieve 
-    except ImportError: 
-        from urllib import urlretrieve
+    print("Hidden layers dimension: {0}".format(hidden_layers_dim))
+    print("No of hidden layers: {0}".format(num_hidden_layers))
+    print("Learning rate: {0}".format(learning_rate))
 
 
-    # URLs for the train image and labels data
-    url_train_image = 'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz'
-    url_train_labels = 'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz'
-    num_train_samples = 60000
-
-    print("Downloading train data")
-    train = try_download(url_train_image, url_train_labels, num_train_samples)
-
-    url_test_image = 'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz'
-    url_test_labels = 'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
-    num_test_samples = 10000
-
-    print("Downloading test data")
-    test = try_download(url_test_image, url_test_labels, num_test_samples)
-
-
-    # Save the train and test files (prefer our default path for the data)
-    data_dir = os.path.join("..", "Examples", "Image", "DataSets", "MNIST")
-    if not os.path.exists(data_dir):
-        data_dir = os.path.join("data", "MNIST")
-
-    print ('Writing train text file...')
-    savetxt(os.path.join(data_dir, "Train-28x28_cntk_text.txt"), train)
-
-    print ('Writing test text file...')
-    savetxt(os.path.join(data_dir, "Test-28x28_cntk_text.txt"), test)
-
-    print('Done with downloading data.')
 
     # Ensure we always get the same amount of randomness
     np.random.seed(0)
 
-    # Ensure the training and test data is generated and available for this tutorial.
-    # We search in two locations in the toolkit for the cached MNIST data set.
-    data_found = False
-    for data_dir in [os.path.join("..", "Examples", "Image", "DataSets", "MNIST"),
-                    os.path.join("data", "MNIST")]:
-        train_file = os.path.join(data_dir, "Train-28x28_cntk_text.txt")
-        test_file = os.path.join(data_dir, "Test-28x28_cntk_text.txt")
-        if os.path.isfile(train_file) and os.path.isfile(test_file):
-            data_found = True
-            break
-    if not data_found:
-        raise ValueError("Please generate the data by completing CNTK 103 Part A")
-    print("Data directory is {0}".format(data_dir))
+    train_file = os.path.join("Data", "MNIST_train.txt")
+    test_file = os.path.join("Data", "MNIST_validate.txt")
 
     input = C.input_variable(input_dim)
     label = C.input_variable(num_output_classes)

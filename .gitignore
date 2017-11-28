@@ -2,3 +2,6 @@
 .ipynb_checkpoints
 azureml-logs
 *.dprep.user
+.azureml
+Walkthroughs/MNISTwithCNTK/.vscode/
+
