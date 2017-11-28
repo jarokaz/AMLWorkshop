@@ -133,7 +133,7 @@ if __name__ == '__main__':
 
     # load hyperparameters from command line arguments
     if len(sys.argv) > 1:
-        learning_rate = float(sys.argv[1]
+        learning_rate = float(sys.argv[1])
 
     if len(sys.argv) > 2:
         hidden_layers_dim = int(sys.argv[2])
@@ -141,7 +141,11 @@ if __name__ == '__main__':
     if len(sys.argv) > 3:
         num_hidden_layers = int(sys.argv[3])
 
- 
+    # log hyperparameters for this run
+    run_logger.log("Learning rate", learning_rate) 
+    run_logger.log("Number of hidden layers", num_hidden_layers)
+    run_logger.log("Hidden layer dimension", hidden_layers_dim)
+
     try: 
         from urllib.request import urlretrieve 
     except ImportError: 
@@ -248,10 +252,9 @@ if __name__ == '__main__':
             errors.append(float(error))
             losses.append(float(loss))
     
-    # log the losses
-    run_logger.log("Loss", losses)
-    run_logger.log("Error",errors)
-    run_logger.log("Accuracy", 2)
+    # Log the training error and loss
+    run_logger.log("Training Loss", losses)
+    run_logger.log("Training Error",errors)
     
 
     # Read the training data
@@ -283,27 +286,11 @@ if __name__ == '__main__':
 
     # Average of evaluation errors of all test minibatches
     print("Average test error: {0:.2f}%".format(test_result*100 / num_minibatches_to_test))
+ 
+    # Log validation error
+    run_logger.log("Validation Error", test_result*100 /num_minibatches_to_test)
 
-    out = C.softmax(z)
 
-    # Read the data for evaluation
-    reader_eval = create_reader(test_file, False, input_dim, num_output_classes)
-
-    eval_minibatch_size = 25
-    eval_input_map = {input: reader_eval.streams.features} 
-
-    data = reader_test.next_minibatch(eval_minibatch_size, input_map = test_input_map)
-
-    img_label = data[label].asarray()
-    img_data = data[input].asarray()
-    predicted_label_prob = [out.eval(img_data[i]) for i in range(len(img_data))]
-
-    # Find the index with the maximum value for both predicted as well as the ground truth
-    pred = [np.argmax(predicted_label_prob[i]) for i in range(len(predicted_label_prob))]
-    gtlabel = [np.argmax(img_label[i]) for i in range(len(img_label))]
-
-    print("Label    :", gtlabel[:25])
-    print("Predicted:", pred)
-    
+   
     # save model to outputs folder
     z.save('outputs/cntk.model')
