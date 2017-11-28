@@ -1,6 +1,6 @@
 # Classifying MNIST dataset using CNTK
 
-This sample uses CNTK to create a multi-layer neural network to classify MNIST dataset.
+This walkthrough demonstrates how to train a Fully Connected Neural Network using CNTK's graph API..
 
 The code in this sample is adapted from the following CNTK tutorials:
 1. https://github.com/Microsoft/CNTK/blob/v2.0/Tutorials/CNTK_103A_MNIST_DataLoader.ipynb
