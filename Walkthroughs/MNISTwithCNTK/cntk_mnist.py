@@ -1,6 +1,3 @@
-# This code is adapted from CNTK MNIST tutorials: 
-# 1. https://github.com/Microsoft/CNTK/blob/v2.0/Tutorials/CNTK_103A_MNIST_DataLoader.ipynb
-# 2. https://github.com/Microsoft/CNTK/blob/v2.0/Tutorials/CNTK_103C_MNIST_MultiLayerPerceptron.ipynb
 
 # Import the relevant modules to be used later
 from __future__ import print_function
@@ -15,79 +12,6 @@ import pandas
 
 import cntk as C
 from azureml.logging import get_azureml_logger
-
-# Functions to load MNIST images and unpack into train and test set.
-# - loadData reads image data and formats into a 28x28 long array
-# - loadLabels reads the corresponding labels data, 1 for each image
-# - load packs the downloaded image and labels data into a combined format to be read later by 
-#   CNTK text reader 
-def loadData(src, cimg):
-    print ('Downloading ' + src)
-    gzfname, h = urlretrieve(src, './delete.me')
-    print ('Done.')
-    try:
-        with gzip.open(gzfname) as gz:
-            n = struct.unpack('I', gz.read(4))
-            # Read magic number.
-            if n[0] != 0x3080000:
-                raise Exception('Invalid file: unexpected magic number.')
-            # Read number of entries.
-            n = struct.unpack('>I', gz.read(4))[0]
-            if n != cimg:
-                raise Exception('Invalid file: expected {0} entries.'.format(cimg))
-            crow = struct.unpack('>I', gz.read(4))[0]
-            ccol = struct.unpack('>I', gz.read(4))[0]
-            if crow != 28 or ccol != 28:
-                raise Exception('Invalid file: expected 28 rows/cols per image.')
-            # Read data.
-            res = np.fromstring(gz.read(cimg * crow * ccol), dtype = np.uint8)
-    finally:
-        os.remove(gzfname)
-    return res.reshape((cimg, crow * ccol))
-
-def loadLabels(src, cimg):
-    print ('Downloading ' + src)
-    gzfname, h = urlretrieve(src, './delete.me')
-    print ('Done.')
-    try:
-        with gzip.open(gzfname) as gz:
-            n = struct.unpack('I', gz.read(4))
-            # Read magic number.
-            if n[0] != 0x1080000:
-                raise Exception('Invalid file: unexpected magic number.')
-            # Read number of entries.
-            n = struct.unpack('>I', gz.read(4))
-            if n[0] != cimg:
-                raise Exception('Invalid file: expected {0} rows.'.format(cimg))
-            # Read labels.
-            res = np.fromstring(gz.read(cimg), dtype = np.uint8)
-    finally:
-        os.remove(gzfname)
-    return res.reshape((cimg, 1))
-
-def try_download(dataSrc, labelsSrc, cimg):
-    data = loadData(dataSrc, cimg)
-    labels = loadLabels(labelsSrc, cimg)
-    return np.hstack((data, labels))
-
-# Save the data files into a format compatible with CNTK text reader
-def savetxt(filename, ndarray):
-    dir = os.path.dirname(filename)
-
-    if not os.path.exists(dir):
-        os.makedirs(dir)
-
-    if not os.path.isfile(filename):
-        print("Saving", filename )
-        with open(filename, 'w') as f:
-            labels = list(map(' '.join, np.eye(10, dtype=np.uint).astype(str)))
-            for row in ndarray:
-                row_str = row.astype(str)
-                label_str = labels[row[-1]]
-                feature_str = ' '.join(row_str[:-1])
-                f.write('|labels {} |features {}\n'.format(label_str, feature_str))
-    else:
-        print("File already exists", filename)
 
 # Read a CTF formatted text (as mentioned above) using the CTF deserializer from a file
 def create_reader(path, is_training, input_dim, num_label_classes):
@@ -156,20 +80,21 @@ if __name__ == '__main__':
     # Ensure we always get the same amount of randomness
     np.random.seed(0)
 
-    train_file = os.path.join("Data", "MNIST_train.txt")
-    test_file = os.path.join("Data", "MNIST_validate.txt")
+    datapath = os.environ['AZUREML_NATIVE_SHARE_DIRECTORY']
+    train_file = datapath + "MNIST_train.txt"
+    test_file = datapath + "MNIST_validate.txt"
+
+    print("Using training file:  {0}".format(train_file))
+    print("Using testing file:  {0}".format(test_file))
 
     input = C.input_variable(input_dim)
     label = C.input_variable(num_output_classes)
 
-            
-    z = create_model(input)
     # Scale the input to 0-1 range by dividing each pixel by 255.
     z = create_model(input/255.0)
 
     loss = C.cross_entropy_with_softmax(z, label)
     label_error = C.classification_error(z, label)
-
 
     # Instantiate the trainer object to drive the model training
     lr_schedule = C.learning_rate_schedule(learning_rate, C.UnitType.minibatch)
