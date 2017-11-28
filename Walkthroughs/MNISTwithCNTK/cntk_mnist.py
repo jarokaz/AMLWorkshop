@@ -122,6 +122,26 @@ def create_model(features):
 if __name__ == '__main__':
     run_logger = get_azureml_logger() 
 
+    #Define network architecture hyperparameters
+    learning_rate = 0.2
+    hidden_layers_dim = 400
+    num_hidden_layers = 2
+
+    # Define the data dimensions
+    input_dim = 784
+    num_output_classes = 10
+
+    # load hyperparameters from command line arguments
+    if len(sys.argv) > 1:
+        learning_rate = float(sys.argv[1]
+
+    if len(sys.argv) > 2:
+        hidden_layers_dim = int(sys.argv[2])
+
+    if len(sys.argv) > 3:
+        num_hidden_layers = int(sys.argv[3])
+
+ 
     try: 
         from urllib.request import urlretrieve 
     except ImportError: 
@@ -166,10 +186,6 @@ if __name__ == '__main__':
     # Ensure we always get the same amount of randomness
     np.random.seed(0)
 
-    # Define the data dimensions
-    input_dim = 784
-    num_output_classes = 10
-
     # Ensure the training and test data is generated and available for this tutorial.
     # We search in two locations in the toolkit for the cached MNIST data set.
     data_found = False
@@ -184,9 +200,6 @@ if __name__ == '__main__':
         raise ValueError("Please generate the data by completing CNTK 103 Part A")
     print("Data directory is {0}".format(data_dir))
 
-    num_hidden_layers = 2
-    hidden_layers_dim = 400
-
     input = C.input_variable(input_dim)
     label = C.input_variable(num_output_classes)
 
@@ -200,7 +213,6 @@ if __name__ == '__main__':
 
 
     # Instantiate the trainer object to drive the model training
-    learning_rate = 0.2
     lr_schedule = C.learning_rate_schedule(learning_rate, C.UnitType.minibatch)
     learner = C.sgd(z.parameters, lr_schedule)
     trainer = C.Trainer(z, (loss, label_error), [learner])
