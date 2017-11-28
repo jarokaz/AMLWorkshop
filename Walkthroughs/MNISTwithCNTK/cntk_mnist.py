@@ -133,18 +133,15 @@ if __name__ == '__main__':
 
     # load hyperparameters from command line arguments
     if len(sys.argv) > 1:
-        learning_rate = float(sys.argv[1])
+        num_hidden_layers = int(sys.argv[1])
 
     if len(sys.argv) > 2:
-        hidden_layers_dim = int(sys.argv[2])
+        learning_rate = float(sys.argv[2])
 
-    if len(sys.argv) > 3:
-        num_hidden_layers = int(sys.argv[3])
 
     # log hyperparameters for this run
     run_logger.log("Learning rate", learning_rate) 
-    run_logger.log("Number of hidden layers", num_hidden_layers)
-    run_logger.log("Hidden layer dimension", hidden_layers_dim)
+    run_logger.log("Hidden layers", num_hidden_layers)
 
     try: 
         from urllib.request import urlretrieve 
@@ -253,11 +250,11 @@ if __name__ == '__main__':
             losses.append(float(loss))
     
     # Log the training error and loss
-    run_logger.log("Training Loss", losses)
-    run_logger.log("Training Error",errors)
+    run_logger.log("Training Losses", losses)
+    run_logger.log("Training Errors",errors)
     
 
-    # Read the training data
+    # Read the validation data
     reader_test = create_reader(test_file, False, input_dim, num_output_classes)
 
     test_input_map = {
@@ -289,8 +286,6 @@ if __name__ == '__main__':
  
     # Log validation error
     run_logger.log("Validation Error", test_result*100 /num_minibatches_to_test)
-
-
    
     # save model to outputs folder
     z.save('outputs/cntk.model')
