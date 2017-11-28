@@ -124,8 +124,8 @@ if __name__ == '__main__':
 
     #Define network architecture hyperparameters
     learning_rate = 0.2
-    hidden_layers_dim = 400
-    num_hidden_layers = 2
+    hidden_layers_dim = 10 
+    num_hidden_layers = 1
 
     # Define the data dimensions
     input_dim = 784
@@ -133,27 +133,25 @@ if __name__ == '__main__':
 
     # load hyperparameters from command line arguments
     if len(sys.argv) > 1:
-        num_hidden_layers = int(sys.argv[1])
-
+        hidden_layers_dim = int(sys.argv[1])
+        
     if len(sys.argv) > 2:
-        learning_rate = float(sys.argv[2])
+        num_hidden_layers = int(sys.argv[2])
+
+    if len(sys.argv) > 3:
+        learning_rate = float(sys.argv[3])
 
 
     # log hyperparameters for this run
     run_logger.log("Learning rate", learning_rate) 
-    run_logger.log("Hidden layers", num_hidden_layers)
+    run_logger.log("Hidden layers dimmension", hidden_layers_dim)
+    run_logger.log("No of hidden layers", num_hidden_layers)
 
     try: 
         from urllib.request import urlretrieve 
     except ImportError: 
         from urllib import urlretrieve
 
-    # Select the right target device when this script is being used:
-    if 'TEST_DEVICE' in os.environ:
-        if os.environ['TEST_DEVICE'] == 'cpu':
-            C.device.try_set_default_device(C.device.cpu())
-        else:
-            C.device.try_set_default_device(C.device.gpu(0))
 
     # URLs for the train image and labels data
     url_train_image = 'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz'
@@ -280,12 +278,12 @@ if __name__ == '__main__':
         eval_error = trainer.test_minibatch(data)
         test_result = test_result + eval_error
     
-
-    # Average of evaluation errors of all test minibatches
-    print("Average test error: {0:.2f}%".format(test_result*100 / num_minibatches_to_test))
+    accuracy = 100 - (test_result * 100) / num_minibatches_to_test
+    # Average accuracy across all test minibatches
+    print("Accuracy: {0:.2f}%".format(accuracy))
  
-    # Log validation error
-    run_logger.log("Validation Error", test_result*100 /num_minibatches_to_test)
+    # Log validation accuracy 
+    run_logger.log("Accuracy", accuracy)
    
     # save model to outputs folder
     z.save('outputs/cntk.model')
