@@ -35,7 +35,7 @@ The Deep Learning Virtual Machine template includes all the necessary NVidia dri
 ### Step 2. Attach the compute context
 Run following command to add the GPU VM as a compute target in your current project:
 ```
-$ az ml computetarget attach --name mygpuvm --address <ip address or FQDN> --username <username> --password <pwd> --type remotedocker
+$ az ml computetarget attach --name mygpuvm --address <ip address or FQDN> --username <username> --password <pwd> remotedocker
 ```
 The above command creates a `mygpuvm.compute` and `mygpuvm.runconfig` files under the `aml_config` folder.
 
