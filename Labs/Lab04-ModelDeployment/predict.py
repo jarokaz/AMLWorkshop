@@ -9,6 +9,7 @@ def run(rawdata):
     try:
         image_list = json.loads(rawdata)['image']
         images = np.asarray(image_list)
+        images = images/255
         results = model.predict(data)
     except Exception as e:
         results = str(e)
