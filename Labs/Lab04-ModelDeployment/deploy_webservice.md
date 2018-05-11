@@ -17,7 +17,7 @@ inputs = {"input_array": SampleDefinition(DataTypes.NUMPY, yourinputarray)}
 generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
 ```
 
-## Create a score.py file
+## Create a scoring driver
 
 You provide a score.py file, which loads your model and returns the prediction result(s) using the model.
 The file must include two functions: init and run.
