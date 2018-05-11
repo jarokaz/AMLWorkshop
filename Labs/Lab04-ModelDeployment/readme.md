@@ -46,6 +46,12 @@ Create a local environment
 ```
 az ml env setup -l  eastus2 -n [your environment name] -g [your resource group]
 ```
+
+Wait till the operation completes. You can monitor the status using:
+```
+az ml env show -g <Your resource group> -n <Your local environment>
+```
+
 The local environment setup command creates the following resources in your subscription:
 
 - A resource group (if not provided, or if the name provided does not exist)
