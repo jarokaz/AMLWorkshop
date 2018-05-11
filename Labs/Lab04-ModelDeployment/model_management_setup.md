@@ -21,14 +21,14 @@ cd AMLWorkshop/Labs/Lab04-ModelDeployment/
 wget https://azaiworkshopst.blob.core.windows.net/wood/lumber1.h5
 ```
 
-## Set up deployment environments
+## Set up Model Management
 Logon to Azure and set up the default subscription
 ```
 az login
 az account set -s <Subscription ID>
 ```
 
-### Set up a local deployment environment
+### Register providers
 Register a few environment providers. This is a one time activity
 ```
 az provider register -n Microsoft.MachineLearningCompute
@@ -36,7 +36,17 @@ az provider register -n Microsoft.ContainerRegistry
 az provider register -n Microsoft.ContainerService
 ```
 
-Create a local environment
+### Create a Model Management Account
+```
+az ml account modelmanagement create -l eastus2 -n <account name> -g <resource group name> --sku-instances <number of instances> --sku-name <Pricing tier for example S1>
+```
+
+### Set a model management account
+```
+az ml account modelmanagement set -n <account name> -g <resource group>
+```
+
+## Create a local deployment environment
 
 ```
 az ml env setup -l  eastus2 -n <environment name> -g <resource group>
@@ -59,19 +69,10 @@ After the command completes, set the created environment as a default environmen
 ```
 az ml env set -n <environment name> -g <resource group>
 ```
-### Set up a cluster deployment environment
+### Create a cluster deployment environment
 ```
 az ml env setup --cluster -n <cluster env name> -g <resource group> -l eastus2
 
-```
-### Create a Model Management Account
-```
-az ml account modelmanagement create -l eastus2 -n <account name> -g <resource group name> --sku-instances <number of instances> --sku-name <Pricing tier for example S1>
-```
-
-### Set a model management account
-```
-az ml account modelmanagement set -n <account name> -g <resource group>
 ```
 
 ## Deploy a model as a web service
