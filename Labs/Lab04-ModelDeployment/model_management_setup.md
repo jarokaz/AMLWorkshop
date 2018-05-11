@@ -46,7 +46,7 @@ az ml account modelmanagement create -l eastus2 -n <account name> -g <resource g
 ```
 az ml account modelmanagement set -n <account name> -g <resource group>
 ```
-### Create a cluster deployment environment
+### Create a deployment environment
 ```
 az ml env setup --cluster -n <env name> -g <resource group> -l eastus2
 
