@@ -51,6 +51,7 @@ az ml account modelmanagement set -n <account name> -g <resource group>
 az ml env setup --cluster -n <env name> -g <resource group> -l eastus2
 
 ```
+To create local only deployment environment skip the `--cluster` option
 
 Wait till the operation completes. You can monitor the status using:
 ```
@@ -75,13 +76,6 @@ You can switch between a local and cluster mode using
 az ml env cluster
 az ml env local
 ```
-## Create a local deployment environment
-
-```
-az ml env setup -l  eastus2 -n <environment name> -g <resource group>
-```
-
-## Deploy a model as a web service
 
 
 
