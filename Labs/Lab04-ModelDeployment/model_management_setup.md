@@ -45,16 +45,15 @@ az ml account modelmanagement create -l eastus2 -n <account name> -g <resource g
 ```
 az ml account modelmanagement set -n <account name> -g <resource group>
 ```
-
-## Create a local deployment environment
-
+### Create a cluster deployment environment
 ```
-az ml env setup -l  eastus2 -n <environment name> -g <resource group>
+az ml env setup --cluster -n <env name> -g <resource group> -l eastus2
+
 ```
 
 Wait till the operation completes. You can monitor the status using:
 ```
-az ml env show -g <resource group> -n <local environment>
+az ml env show -g <resource group> -n <env name>
 ```
 
 The local environment setup command creates the following resources in your subscription:
@@ -69,10 +68,11 @@ After the command completes, set the created environment as a default environmen
 ```
 az ml env set -n <environment name> -g <resource group>
 ```
-### Create a cluster deployment environment
-```
-az ml env setup --cluster -n <cluster env name> -g <resource group> -l eastus2
 
+## Create a local deployment environment
+
+```
+az ml env setup -l  eastus2 -n <environment name> -g <resource group>
 ```
 
 ## Deploy a model as a web service
