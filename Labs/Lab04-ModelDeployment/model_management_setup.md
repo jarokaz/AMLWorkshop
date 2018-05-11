@@ -38,6 +38,7 @@ az provider register -n Microsoft.ContainerService
 
 ### Create a Model Management Account
 ```
+az group create -l eastus2 -n <resource group name>
 az ml account modelmanagement create -l eastus2 -n <account name> -g <resource group name> --sku-instances <number of instances> --sku-name <Pricing tier for example S1>
 ```
 
