@@ -32,7 +32,7 @@ az ml model register --model <path to model file> --name <model name>
 
 ## Create a manifest
 ```
-az ml manifest create --manifest-name <your new manifest name> -f <path to score file> -r <runtime for the image, e.g. spark-py>
+az ml manifest create --manifest-name <your new manifest name> -f <path to score file> -r <runtime for the image, e.g. spark-py> -i <model id>
 ```
 
 ## Create an image
