@@ -70,6 +70,11 @@ After the command completes, set the created environment as a default environmen
 az ml env set -n <environment name> -g <resource group name>
 ```
 
+You can switch between a local and cluster mode using
+```
+az ml env cluster
+az ml env local
+```
 ## Create a local deployment environment
 
 ```
