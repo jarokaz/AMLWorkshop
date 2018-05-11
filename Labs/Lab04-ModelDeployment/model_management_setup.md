@@ -67,7 +67,7 @@ The local environment setup command creates the following resources in your subs
 
 After the command completes, set the created environment as a default environment
 ```
-az ml env set -n <environment name> -g <resource group>
+az ml env set -n <environment name> -g <resource group name>
 ```
 
 ## Create a local deployment environment
