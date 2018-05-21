@@ -105,7 +105,10 @@ def train_evaluate():
     model.fit(x_train, y_train, 
                   validation_data = (x_test, y_test),
                   shuffle = True,
-                  batch_size=32, epochs=10, verbose=1, callbacks=[tensorboard])
+                  batch_size=FLAGS.batch_size,
+                  epochs=FLAGS.epochs,
+                  verbose=1, 
+                  callbacks=[tensorboard])
 
 
     model.save(FLAGS.save_model_path)
@@ -115,12 +118,11 @@ FLAGS = tf.app.flags.FLAGS
 
 # Default global parameters
 tf.app.flags.DEFINE_integer('batch_size', 32, "Number of images per batch")
-tf.app.flags.DEFINE_integer('max_steps', 100000, "Number of steps to train")
+tf.app.flags.DEFINE_integer('epochs', 20, "Number of epochs to train")
 tf.app.flags.DEFINE_string('log_dir', '../../../logdir/lumber1', "Checkpoints")
 tf.app.flags.DEFINE_string('training_file', '../../../data/wood/tfrecords/training.tfrecords', "Training file")
 tf.app.flags.DEFINE_string('validation_file', '../../../data/wood/tfrecords/validation.tfrecords', "Validation file")
 tf.app.flags.DEFINE_string('save_model_path', '../../../SaveModel/lumber1.h5', 'Filename to save model to')
-tf.app.flags.DEFINE_float('lr', 0.0005, 'Learning rate')
 tf.app.flags.DEFINE_string('verbosity', 'INFO', "Control logging level")
 
 
