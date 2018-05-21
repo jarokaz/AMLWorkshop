@@ -12,3 +12,12 @@ To install Azure CLI on MacOS follow the instructions at:
 
 https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest
 
+
+## Install Azure ML Workbench
+
+Note that the current AML roadmap is emphasizing Azure ML SDK/CLI. Although we are not going to use the Workbench during the workshop we still need to install it to get the latest version of Azure ML CLI.
+
+To install the current version of Azure ML Workbench follow the instructions at:
+
+https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning
+
