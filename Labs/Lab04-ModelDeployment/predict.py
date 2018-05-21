@@ -7,8 +7,9 @@ def init():
     
 def run(rawdata):
     try:
-        data = json.loads(rawdata)['data']
-        data = numpy.array(data).reshape(1, len(data))
+        image_list = json.loads(rawdata)['image']
+        images = np.asarray(image_list)
+        images = images/255
         results = model.predict(data)
     except Exception as e:
         results = str(e)
