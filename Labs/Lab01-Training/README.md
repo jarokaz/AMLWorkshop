@@ -169,7 +169,7 @@ az batchai cluster list-nodes -n <Cluster name> -o table
 
 ### Explore the cluster's node
 ```
-ssh <IP address> -p node
+ssh <IP address> -p <port>
 cd /mnt/batch/tasks/shared/LS_root/mounts
 ```
 
