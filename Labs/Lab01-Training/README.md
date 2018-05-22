@@ -93,20 +93,10 @@ az storage file copy start-batch \
 ```
 
 
-
-### Create a directory for the lab's scripts
+#### Copy the training scripts
 ```
-az storage directory create \
-    --share-name  <File share name>
-    --name scripts/lab01
-```
-
-#### Copy training scripts
-```
-cd <Repo root>/Azure_AI_Infrastructure/Labs/Lab01-SingleGPU
-az storage file upload --share-name <File share name> --source train_eval.py --path scripts/lab01
-az storage file upload --share-name <File share name> --source resnet.py --path scripts/lab01
-az storage file upload --share-name <File share name> --source feed.py --path scripts/lab01
+cd <Repo root>/Azure_AI_Infrastructure/Labs/Lab01-Training
+az storage file upload --share-name <File share name> --source train_eval.py --path scripts
 ```
 
 #### Verify that files are in the right folders
