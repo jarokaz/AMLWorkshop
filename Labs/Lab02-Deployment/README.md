@@ -1,24 +1,9 @@
 # Azure ML Model Management
 
-## Prepare workshop environment
-### Create DL VM
-Follow the instructor
-After the VM has been provisioned connect to it using `ssh` client of your choice
-
-### Configure Docker
+### Download the model file to Lab02 workspace
 ```
-sudo /opt/microsoft/azureml/initial_setup.sh
-```
-
-### Clone the workshop repo
-```
-cd ~/notebooks
-git clone https://github.com/jarokaz/AMLWorkshop.git
-```
-### Download the model file to Lab04 workspace
-```
-cd AMLWorkshop/Labs/Lab04-ModelDeployment/
-wget https://azaiworkshopst.blob.core.windows.net/wood/lumber1.h5
+cd AMLWorkshop/Labs/Lab02-Deployment/
+wget https://azureailabs.blob.core.windows.net/models/lumber.h5
 ```
 
 ## Set up Model Management
