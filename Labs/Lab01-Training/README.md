@@ -101,7 +101,7 @@ az storage file upload --share-name <File share name> --source train_eval.py --p
 
 #### Verify that files are in the right folders
 ```
-az storage file list --share-name <File share name> --path scripts/lab01 -o table
+az storage file list --share-name <File share name> --path scripts -o table
 az storage file list --share-name <File share name> --path data -o table
 ```
 
