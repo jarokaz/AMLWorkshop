@@ -3,12 +3,12 @@
     "properties": {
         "nodeCount": 1,
         "customToolkitSettings": {
-            "commandLine": "python $AZ_BATCHAI_INPUT_SCRIPTS/train_evaluate.py --training_file=$AZ_BATCHAI_INPUT_DATASET/training.tfrecords --log_dir=$AZ_BATCHAI_OUTPUT_JOBDIR --save_model_path=$AZ_BATCHAI_OUTPUT_SAVEMODEL"
+            "commandLine": "python $AZ_BATCHAI_INPUT_SCRIPTS/train_evaluate.py --training_file=$AZ_BATCHAI_INPUT_DATASET/training.tfrecords --validation_file=$AZ_BATCHAI_INPUT_DATASET/validation.tfrecords --log_dir=$AZ_BATCHAI_OUTPUT_JOBDIR --save_model_path=$AZ_BATCHAI_OUTPUT_SAVEMODEL"
         },
         "stdOutErrPathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/external",
         "inputDirectories": [{
             "id": "SCRIPTS",
-            "path": "$AZ_BATCHAI_MOUNT_ROOT/external/scripts/lab01"
+            "path": "$AZ_BATCHAI_MOUNT_ROOT/external/scripts"
         }, {
             "id": "DATASET",
             "path": "$AZ_BATCHAI_MOUNT_ROOT/external/data"                    
