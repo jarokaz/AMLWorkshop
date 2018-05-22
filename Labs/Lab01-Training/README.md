@@ -85,9 +85,9 @@ The instructor will provide you with <Storage account access key>
 az storage file copy start-batch \
   --destination-path data \
   --destination-share <File share name> \
-  --source-account-name azaiworkshopst \
-  --source-account-key <Storage account access key> \
-  --source-container tinyimagenet \
+  --source-account-name azureailabs \
+  --source-account-key k0sEc3OL07/c5Gy5L4LS4bPrvczX8Smktn2GGpISa9iQ4CGdPRvPQXZ71ZbAg5K3YCXpBJnk1kV/+ZahmO2KCA== \
+  --source-container woodtfrecords \
   --pattern '*' \
   --dryrun
 ```
