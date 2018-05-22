@@ -19,6 +19,30 @@ source activate <env name>
 pip install azure-cli
 ```
 
+### Install Azure ML Model Management CLI
+```
+pip install -r https://aka.ms/az-ml-o16n-cli-requirements-file
+```
+
+### Logon to Azure
+```
+az login
+```
+
+### Set the default subscriptions
+```
+az account set -s <subscription id>
+```
+
+
+### Register providers
+Before using Azure ML CLI you need to register Azure ML resource providers. This is a one time activity
+
+```
+az provider register -n Microsoft.MachineLearningCompute
+az provider register -n Microsoft.ContainerRegistry
+az provider register -n Microsoft.ContainerService
+```
 
 ## Clone the workshop's repository
 
