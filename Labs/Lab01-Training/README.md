@@ -96,7 +96,7 @@ az storage file copy start-batch \
 #### Copy the training scripts
 ```
 cd <Repo root>/AMLWorkshop/Labs/Lab01-Training
-az storage file upload --share-name <File share name> --source train_eval.py --path scripts
+az storage file upload --share-name <File share name> --source train_evaluate.py --path scripts
 ```
 
 #### Verify that files are in the right folders
