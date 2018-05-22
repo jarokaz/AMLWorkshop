@@ -221,3 +221,8 @@ az batchai job terminate --name <Job name>
 az batchai job delete --name <Job name>
 ```
 
+## Delete the  cluster
+```
+az batchai cluster delete --name <Cluster name>
+```
+
