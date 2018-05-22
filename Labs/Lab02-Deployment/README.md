@@ -1,8 +1,13 @@
 # Azure ML Model Management
 
-## Switch to Azure ML CLI environment
+Make sure that `azure-cli` environment you used in Lab 1 is deactivated
 ```
-source activate azure-ml
+source deactivate
+```
+
+## Configure Docker on Linux
+```
+sudo /opt/microsoft/azureml/initial_setup.sh
 ```
 
 ## Download the model file to Lab02 workspace
