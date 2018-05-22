@@ -105,15 +105,15 @@ az storage file list --share-name <File share name> --path scripts -o table
 az storage file list --share-name <File share name> --path data -o table
 ```
 
-## Prepare a GPU cluster
+## Prepare a single node GPU cluster
 
 ```
 az batchai cluster create \
   --name  <Cluster name> \
   --vm-size STANDARD_NC6 \
   --image UbuntuLTS \
-  --min 3 \
-  --max 3 \
+  --min 1 \
+  --max 1 \
   --storage-account-name <Storage account name> \
   --afs-name <File share name> \
   --afs-mount-path external \
@@ -128,8 +128,8 @@ az batchai cluster create \
   --name  <Cluster name> \
   --vm-size STANDARD_NC6 \
   --image UbuntuLTS \
-  --min 3 \
-  --max 3 \
+  --min 1 \
+  --max 1 \
   --storage-account-name <Storage account name> \
   --afs-name <File share name> \
   --afs-mount-path external \
@@ -148,8 +148,8 @@ az batchai cluster create \
   --name  <Cluster name> \
   --vm-size STANDARD_NC6 \
   --image UbuntuLTS \
-  --min 3 \
-  --max 3 \
+  --min 1 \
+  --max 1 \
   --storage-account-name <Storage account name> \
   --afs-name <File share name> \
   --afs-mount-path external \
