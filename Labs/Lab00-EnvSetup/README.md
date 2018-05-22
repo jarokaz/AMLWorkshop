@@ -41,8 +41,6 @@ Clone the workshop's repository in your preferred location
 git clone https://github.com/jarokaz/AMLWorkshop.git
 ```
 
-## Create Azure ML Project
-The instruction will guide you through the project creation process
 
 
 
