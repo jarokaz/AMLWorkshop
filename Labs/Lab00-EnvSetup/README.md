@@ -36,6 +36,7 @@ source activate azure-ml
 ### Install Azure ML Model Managment CLI
 
 ```
+sudo -i
 pip install -r https://aka.ms/az-ml-o16n-cli-requirements-file
 ```
 
