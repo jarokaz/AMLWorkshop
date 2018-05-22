@@ -18,7 +18,7 @@
             "pathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/external",
             "pathSuffix": "jobdir"
         }, {
-	    "id: "SAVEMODEL",
+	    "id": "SAVEMODEL",
 	    "pathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/external",
 	    "pathSuffix": "savemodel"
 	}],
