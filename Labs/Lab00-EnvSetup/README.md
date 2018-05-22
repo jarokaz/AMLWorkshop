@@ -1,12 +1,9 @@
 # Workshop environment set up
 
-## Install Anaconda for Python 3
-To install Anaconda for Python 3 follow the instructions at:
-
-https://conda.io/docs/user-guide/install/index.html
+The instructor will guide you through the provisioning of Azure Data Science VM.
 
 ## Install Azure CLI 
-We are going to install all workshop dependencies in an isolated conda environment
+We are going to install the new version of Azure CLI in an isolated conda environment
 
 ### Create and activate a conda environment
 ```
@@ -24,28 +21,11 @@ pip install azure-cli
 source deactivate azure-cli
 ```
 
-## Install Azure ML Model Management CLI
-At this point Azure ML Model Management CLI is not based on the latest version of Azure CLI. As such we will install it in an isoloate conda environmet
-
-### Create and activate a conda environment
-```
-conda create -n azure-ml python=3.5 anaconda
-source activate azure-ml
-```
-
-### Install Azure ML Model Managment CLI
-
-```
-sudo -i
-pip install -r https://aka.ms/az-ml-o16n-cli-requirements-file
-```
 
 ### Deactivate the environment
 ```
 source deactivate azure-ml
 ```
-
-
 
 
 ## Clone the workshop's repository
