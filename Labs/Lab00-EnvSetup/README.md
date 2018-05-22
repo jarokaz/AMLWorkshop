@@ -1,36 +1,21 @@
 # Workshop environment set up
 
-## Create Azure Deep Learning VM 
-Azure Deep Learning VM will be used as an experimentation environment during the workshop.
+## Install Anaconda for Python 3
+To install Anaconda for Python 3 follow the instructions at:
 
-The instructor will guide you through the provisioning process
+https://conda.io/docs/user-guide/install/index.html
 
 ## Install Azure CLI
-You will need to install Azure CLI on your workstation
+You will need to install Azure CLI on your workstation. We are going to install all workshop dependencies in an isolated environment
 
+### Create and activate a conda environment
+```
+conda create -n <env name> python=3.5 anaconda
+source activate <env name>
+```
 
-### Azure CLI on Windows
-To install Azure CLI on Windows follow the instructions at:
-
-https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest
-
-### Azure CLI on MacOS
-
-To install Azure CLI on MacOS follow the instructions at:
-
-https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest
-
-## Provision Azure ML Experimentation and Model Management Accounts
-The instructor will guide you through the provisioning process.
-
-
-## Install Azure ML Workbench
-
-Note that the current AML roadmap is emphasizing Azure ML SDK/CLI. Although we are not going to use the Workbench during the workshop we still need to install it to get the latest version of Azure ML CLI.
-
-To install the current version of Azure ML Workbench follow the instructions at:
-
-https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning
+### Install Azure CLI
+```
 
 
 ## Clone the workshop's repository
