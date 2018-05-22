@@ -12,6 +12,9 @@ To install Azure CLI on MacOS follow the instructions at:
 
 https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-macos?view=azure-cli-latest
 
+## Provision Azure ML Experimentation and Model Management Accounts
+The instructor will guide you through the provisioning process.
+
 
 ## Install Azure ML Workbench
 
