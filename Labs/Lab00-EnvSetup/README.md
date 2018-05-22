@@ -24,3 +24,15 @@ To install the current version of Azure ML Workbench follow the instructions at:
 
 https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning
 
+
+## Clone the workshop's repository
+
+Clone the workshop's repository in your preferred location
+
+```
+git clone https://github.com/jarokaz/AMLWorkshop.git
+```
+
+
+
+
