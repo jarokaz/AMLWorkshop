@@ -5,7 +5,7 @@ To install Anaconda for Python 3 follow the instructions at:
 
 https://conda.io/docs/user-guide/install/index.html
 
-## Install Azure CLI
+## Install Azure CLI Azure ML CLI
 You will need to install Azure CLI on your workstation. We are going to install all workshop dependencies in an isolated environment
 
 ### Create and activate a conda environment
@@ -15,6 +15,8 @@ source activate <env name>
 ```
 
 ### Install Azure CLI
+```
+pip install azure-cli
 ```
 
 
