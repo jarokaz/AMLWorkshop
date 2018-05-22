@@ -1,6 +1,14 @@
 # Workshop environment set up
 
+## Create Azure Deep Learning VM 
+Azure Deep Learning VM will be used as an experimentation environment during the workshop.
+
+The instructor will guide you through the provisioning process
+
 ## Install Azure CLI
+You will need to install Azure CLI on your workstation
+
+
 ### Azure CLI on Windows
 To install Azure CLI on Windows follow the instructions at:
 
@@ -32,6 +40,9 @@ Clone the workshop's repository in your preferred location
 ```
 git clone https://github.com/jarokaz/AMLWorkshop.git
 ```
+
+## Create Azure ML Project
+The instruction will guide you through the project creation process
 
 
 
